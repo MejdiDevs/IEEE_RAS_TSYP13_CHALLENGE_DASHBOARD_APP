@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Leaflet CSS overrides for dark theme */
+.leaflet-container {
+  background: #1e1e2e !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(30, 30, 46, 0.95) !important;
+  border: 1px solid rgba(87, 19, 92, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 8px !important;
+}
+
+.leaflet-popup-content {
+  color: #e0e0e0 !important;
+  margin: 12px !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(30, 30, 46, 0.95) !important;
+  border: 1px solid rgba(87, 19, 92, 0.3) !important;
+}
+
+.leaflet-control-zoom a {
+  background: rgba(30, 30, 46, 0.9) !important;
+  color: #e0e0e0 !important;
+  border: 1px solid rgba(87, 19, 92, 0.3) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: rgba(87, 19, 92, 0.3) !important;
+}
+
+.leaflet-control-attribution {
+  display: none !important;
+}
+
+.custom-vehicle-marker,
+.custom-task-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+  background: rgba(30, 30, 46, 0.95) !important;
+  border: 1px solid rgba(87, 19, 92, 0.3) !important;
+}
+
+/* Neon glow effect for polylines only (not markers) */
+.leaflet-interactive.leaflet-polyline {
+  filter: drop-shadow(0 0 3px rgba(8, 95, 210, 0.6)) drop-shadow(0 0 6px rgba(8, 95, 210, 0.4));
+}
+
+/* Remove any blue hue from task markers */
+.custom-task-marker {
+  filter: none !important;
+}
+
+/* Custom Scrollbar Styles */
+/* Webkit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 30, 46, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #57135C 0%, #530E3F 50%, #172A86 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(30, 30, 46, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #6a1a6f 0%, #641a4a 50%, #1f35a0 100%);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #57135C rgba(30, 30, 46, 0.5);
+}
+
+@layer base {
+  :root {
+    /* Deep futuristic dark theme */
+    --background: 230 25% 5%;
+    --foreground: 210 40% 96%;
+
+    --card: 230 30% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 230 30% 8%;
+    --popover-foreground: 210 40% 96%;
+
+    /* Primary: Electric Blue */
+    --primary: 217 91% 42%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary: Deep Purple */
+    --secondary: 300 76% 22%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted */
+    --muted: 230 20% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent: Light Blue */
+    --accent: 207 90% 43%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 230 20% 18%;
+    --input: 230 20% 18%;
+    --ring: 217 91% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom colors for the landing page */
+    --purple-primary: 309 82% 22%;
+    --purple-dark: 324 86% 19%;
+    --blue-dark: 230 70% 31%;
+    --blue-primary: 219 96% 34%;
+    --blue-light: 209 95% 43%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--blue-dark)), hsl(var(--purple-dark)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--blue-light)), hsl(var(--accent)));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--purple-primary) / 0.5), hsl(var(--blue-primary) / 0.5));
+    
+    /* Glass effect */
+    --glass-bg: hsl(230 30% 10% / 0.6);
+    --glass-border: hsl(230 20% 25% / 0.5);
+    
+    /* Shadows */
+    --shadow-glow: 0 0 60px hsl(var(--blue-light) / 0.3);
+    --shadow-card: 0 8px 32px hsl(230 50% 5% / 0.5);
+
+    --sidebar-background: 230 25% 8%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 217 91% 50%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 230 20% 15%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 230 20% 18%;
+    --sidebar-ring: 217 91% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glass-strong {
+    background: hsl(230 30% 12% / 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid hsl(230 20% 30% / 0.6);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--blue-light)), hsl(var(--accent)), hsl(var(--purple-primary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-alt {
+    background: linear-gradient(90deg, hsl(210 100% 80%), hsl(var(--blue-light)), hsl(280 80% 70%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 30px hsl(var(--blue-light) / 0.5);
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(to right, hsl(230 20% 15% / 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(230 20% 15% / 0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
